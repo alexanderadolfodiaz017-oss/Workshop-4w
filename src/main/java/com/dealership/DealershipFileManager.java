@@ -51,7 +51,7 @@ public class DealershipFileManager {
             }
 
         } catch (IOException e) {
-            System.out.println("⚠️ Error loading file: " + FILE_PATH + " (" + e.getMessage() + ")");
+            System.out.println("Error loading file: " + FILE_PATH + " (" + e.getMessage() + ")");
         }
 
         return dealership;
