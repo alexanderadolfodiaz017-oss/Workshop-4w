@@ -104,5 +104,9 @@ public class Dealership {
     }
 
     public void removeVehicle(Vehicle vehicle) { /* empty for now */ }
+
+    //VV Below me are simple getters for dealership info (Notes) VV
+    public String getCompanyName() { return CompanyName; }
+    public String getAddress() { return Address; }
+    public String getPhoneNumber() { return PhoneNumber; }
 }
-//..

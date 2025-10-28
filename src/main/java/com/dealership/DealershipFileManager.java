@@ -1,30 +1,24 @@
 package com.dealership;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Paths;
 
 public class DealershipFileManager {
 
-    //VV Below me we load the dealership info + vehicles from the CSV file (Notes) VV
+    // VV Below me finds CSV file automatically (Notes) VV
+    private static final String FILE_PATH = Paths.get(System.getProperty("user.dir"), "inventory.csv").toString();
+
+    // VV Below me loads dealership info + cars from CSV (Notes) VV
     public static Dealership getDealership() {
         Dealership dealership = null;
 
-        try {
-            //VV Below me opens the CSV file (Notes) VV
-            BufferedReader reader = new BufferedReader(
-                    new FileReader("C:\\Users\\alexa\\PluralSight\\GitHub\\Workshop-4w\\LaRussoAutoGroup\\inventory.csv")
-            );
-
-            //VV Below me reads the first line for dealership info (Notes) VV
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String[] dealerInfo = reader.readLine().split("\\|");
             dealership = new Dealership(dealerInfo[0], dealerInfo[1], dealerInfo[2]);
 
-            //VV Below me reads and adds each car to inventory (Notes) VV
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
-
                 Vehicle v = new Vehicle(
                         parts[0],
                         Double.parseDouble(parts[1]),
@@ -35,19 +29,32 @@ public class DealershipFileManager {
                         Double.parseDouble(parts[6]),
                         Double.parseDouble(parts[7])
                 );
-
                 dealership.addVehicle(v);
             }
 
-            //VV Below me closes the file after loading (Notes) VV
-            reader.close();
-
         } catch (IOException e) {
-            System.out.println("Error loading file: " + e.getMessage());
+            System.out.println("Error loading file: " + FILE_PATH + " (" + e.getMessage() + ")");
         }
 
-        //VV Below me returns the dealership after loading (Notes) VV
         return dealership;
     }
+
+    // VV Below me saves dealership info + cars to CSV (Notes) VV
+    public static void saveDealership(Dealership dealership) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_PATH))) {
+
+            writer.println(dealership.getCompanyName() + "|" + dealership.getAddress() + "|" + dealership.getPhoneNumber());
+
+            for (Vehicle v : dealership.getAllVehicles()) {
+                writer.println(v.getVin() + "|" + v.getYear() + "|" + v.getMake() + "|" + v.getModel() + "|" +
+                        v.getVehicleType() + "|" + v.getColor() + "|" + v.getOdometer() + "|" + v.getPrice());
+            }
+
+            System.out.println("File saved successfully at: " + FILE_PATH);
+
+        } catch (Exception e) {
+            System.out.println("Error saving file: " + e.getMessage());
+        }
+    }
 }
-//
+
