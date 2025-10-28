@@ -2,17 +2,16 @@ package com.dealership;
 
 import java.util.ArrayList;
 
+// VV Below me manages dealership info + inventory VV
 public class Dealership {
 
-    //VV Below me are the Dealership fields/attributes (Notes) VV
     private String CompanyName;
     private String Address;
     private String PhoneNumber;
-
-    //VV Below me is the inventory list (Notes) VV
     private ArrayList<Vehicle> inventory;
 
-    //VV Below me is the Dealership Constructor (Notes) VV
+    // VV Below me is my Dealership Constructor (Notes) VV
+    // VV This "builds" a dealership object and assigns its name, address, and phone number VV
     public Dealership(String CompanyName, String Address, String PhoneNumber) {
         inventory = new ArrayList<>();
         this.CompanyName = CompanyName;
@@ -20,22 +19,18 @@ public class Dealership {
         this.PhoneNumber = PhoneNumber;
     }
 
-    //VV Below me adds a car to the lot (Notes) VV
+    // VV Below me adds a car to the lot (Notes) VV
     public void addVehicle(Vehicle vehicle) {
         inventory.add(vehicle);
     }
 
-    //VV Below me returns all vehicles in the lot (Notes) VV
+    // VV Below me returns all vehicles in the lot (Notes) VV
     public ArrayList<Vehicle> getAllVehicles() {
         return inventory;
     }
 
-    //VV Below me replaces all vehicles with a new list (Notes) VV
-    public void setAllVehicles(ArrayList<Vehicle> newInventory) {
-        this.inventory = newInventory;
-    }
-
-    //VV Below me shows every car and its details (Notes) VV
+    // VV Below me shows every car and its details (Notes) VV
+    // VV Think of this as a salesman walking you through the lot and describing each car VV
     public void showInventory() {
         System.out.println("=== Current Vehicle Inventory for " + CompanyName + " ===");
         System.out.println("Address: " + Address + " | Phone: " + PhoneNumber);
@@ -54,7 +49,7 @@ public class Dealership {
         System.out.println("Total Cars in Inventory: " + inventory.size());
     }
 
-    //VV Below me are the short search methods (Notes) VV
+    // VV Below me are short search methods (Notes) VV
     public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) {
         ArrayList<Vehicle> results = new ArrayList<>();
         for (Vehicle v : inventory)
@@ -71,41 +66,7 @@ public class Dealership {
         return results;
     }
 
-    public ArrayList<Vehicle> getVehiclesByYear(int min, int max) {
-        ArrayList<Vehicle> results = new ArrayList<>();
-        for (Vehicle v : inventory)
-            if (v.getYear() >= min && v.getYear() <= max)
-                results.add(v);
-        return results;
-    }
-
-    public ArrayList<Vehicle> getVehiclesByColor(String color) {
-        ArrayList<Vehicle> results = new ArrayList<>();
-        for (Vehicle v : inventory)
-            if (v.getColor().equalsIgnoreCase(color))
-                results.add(v);
-        return results;
-    }
-
-    public ArrayList<Vehicle> getVehiclesByMileage(double min, double max) {
-        ArrayList<Vehicle> results = new ArrayList<>();
-        for (Vehicle v : inventory)
-            if (v.getOdometer() >= min && v.getOdometer() <= max)
-                results.add(v);
-        return results;
-    }
-
-    public ArrayList<Vehicle> getVehiclesByVehicleType(String type) {
-        ArrayList<Vehicle> results = new ArrayList<>();
-        for (Vehicle v : inventory)
-            if (v.getVehicleType().equalsIgnoreCase(type))
-                results.add(v);
-        return results;
-    }
-
-    public void removeVehicle(Vehicle vehicle) { /* empty for now */ }
-
-    //VV Below me are simple getters for dealership info (Notes) VV
+    // VV Below me are simple getters for dealership info (Notes) VV
     public String getCompanyName() { return CompanyName; }
     public String getAddress() { return Address; }
     public String getPhoneNumber() { return PhoneNumber; }
