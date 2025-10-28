@@ -40,7 +40,7 @@ public class DealershipFileManager {
                 // VV Adds the car to the lot VV
                 dealership.addVehicle(v);
             }
-
+//
             reader.close(); // VV Closes file VV
 
         } catch (IOException e) {
