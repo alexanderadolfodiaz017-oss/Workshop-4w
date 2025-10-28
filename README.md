@@ -91,18 +91,22 @@ Alexander Diaz
  (optional to include your real one)
 
  Invalid Input:
+
 <img width="547" height="269" alt="Invalid Option" src="https://github.com/user-attachments/assets/d5b977ee-b71d-436a-ac5f-007d573dc311" />
 
 
 Car Inventory:
+
 <img width="888" height="527" alt="Inventory of cars" src="https://github.com/user-attachments/assets/f7f6bc0e-d4f8-4fe0-a1b7-baaa3874ea78" />
 
 
 All my Java classes:
+
 <img width="548" height="243" alt="java classes" src="https://github.com/user-attachments/assets/1d560623-24ac-4f0e-abf7-d3ae11d6dd52" />
 
 
 Menu:
+
 <img width="1920" height="1080" alt="Main menu" src="https://github.com/user-attachments/assets/217d7785-4ac4-46fe-bdf6-d91c68379e86" />
 
 
