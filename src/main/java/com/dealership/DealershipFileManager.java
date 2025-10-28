@@ -20,18 +20,34 @@ public class DealershipFileManager {
 
             // VV Below me auto-creates the CSV file if it doesn't exist (Notes) VV
             if (!file.exists()) {
-                System.out.println("⚠️ inventory.csv not found. Creating a new one at: " + FILE_PATH);
+                System.out.println("inventory.csv not found. Creating a new one at: " + FILE_PATH);
                 file.createNewFile();
+
+                // VV Below me writes dealership info + sample cars automatically (Notes) VV
                 try (PrintWriter writer = new PrintWriter(file)) {
                     writer.println("LaRusso Auto Group|369 E 12th St, Pittsburg, CA 94565|(925) 427-6300");
+                    writer.println("BUG001|2022|Bugatti|Chiron|Sports|Black|500|3000000");
+                    writer.println("COR002|2021|Chevrolet|Corvette|Sports|Red|12000|65000");
+                    writer.println("CAM003|2019|Chevrolet|Camaro|Muscle|Yellow|35000|35000");
+                    writer.println("MUS004|2020|Ford|Mustang|Muscle|Orange|27000|32000");
+                    writer.println("AUD005|2021|Audi|A6|Luxury|Grey|22000|58000");
                 }
             }
+
+            // ✅ NEW: Print which file path is being loaded — using color-safe output
+            final String RESET = "\u001B[0m";
+            final String RED = "\u001B[31m";
+            final String WHITE = "\u001B[37m";
+
+            System.out.println(RED + "Loading inventory from: " + WHITE + FILE_PATH + RESET);
 
             try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
                 String[] dealerInfo = reader.readLine().split("\\|");
                 dealership = new Dealership(dealerInfo[0], dealerInfo[1], dealerInfo[2]);
 
                 String line;
+                int count = 0; // NEW: Keep track of how many cars were loaded
+
                 while ((line = reader.readLine()) != null) {
                     String[] parts = line.split("\\|");
                     if (parts.length == 8) {
@@ -46,8 +62,13 @@ public class DealershipFileManager {
                                 Double.parseDouble(parts[7])
                         );
                         dealership.addVehicle(v);
+                        count++; // NEW: Increment counter
                     }
                 }
+
+                // NEW: Show result count for debugging with color
+                System.out.println(RED + "Successfully loaded " + WHITE + count + RED + " vehicle(s) from file." + RESET);
+
             }
 
         } catch (IOException e) {
@@ -70,12 +91,14 @@ public class DealershipFileManager {
                         v.getVehicleType() + "|" + v.getColor() + "|" + v.getOdometer() + "|" + v.getPrice());
             }
 
-            System.out.println(" File saved successfully at: " + FILE_PATH);
+            final String RESET = "\u001B[0m";
+            final String RED = "\u001B[31m";
+            final String WHITE = "\u001B[37m";
+
+            System.out.println(RED + "File saved successfully at: " + WHITE + FILE_PATH + RESET);
 
         } catch (Exception e) {
-            System.out.println(" Error saving file: " + e.getMessage());
+            System.out.println("Error saving file: " + e.getMessage());
         }
     }
 }
-//
-//!1
