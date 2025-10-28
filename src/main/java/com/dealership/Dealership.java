@@ -33,6 +33,11 @@ public class Dealership {
         return inventory;
     }
 
+    // VV Lets us replace the whole lot (used when loading from file) VV
+    public void setAllVehicles(ArrayList<Vehicle> newInventory) {
+        this.inventory = newInventory;
+    }
+
     // VV Shows all cars and their details (like a salesperson tour) VV
     public void showInventory() {
         System.out.println("=== Current Vehicle Inventory for " + CompanyName + " ===");
@@ -62,3 +67,4 @@ public class Dealership {
     public ArrayList<Vehicle> getVehiclesByVehicleType(String type) { return null; }
     public void removeVehicle(Vehicle vehicle) { /* empty for now */ }
 }
+

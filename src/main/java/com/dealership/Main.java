@@ -30,8 +30,18 @@ public class Main {
         Dealer.addVehicle(Mustang);
         Dealer.addVehicle(A6);
 
-//
         // VV Below me is basically when one of our salesmen bring you to our car lot to show you "ALL" our vehicles and the details about "EACH ONE"(A.K.A prints details for each vehicle)(Notes) VV
         Dealer.showInventory();
+
+        //=======================
+        //VV PHASE 2 SECTION VV
+        //=======================
+
+        //VV Below me we load the dealership info + cars from the CSV file (Notes) VV
+        //VV Think of this like opening the gate in the morning — cars roll in from the file instead of being typed in manually VV
+        Dealership DealerFromFile = DealershipFileManager.getDealership();
+
+        //VV Below me we print the cars that were loaded from the file (Notes) VV
+        DealerFromFile.showInventory();
     }
 }
