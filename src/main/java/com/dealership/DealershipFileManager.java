@@ -70,10 +70,10 @@ public class DealershipFileManager {
                         v.getVehicleType() + "|" + v.getColor() + "|" + v.getOdometer() + "|" + v.getPrice());
             }
 
-            System.out.println("✅ File saved successfully at: " + FILE_PATH);
+            System.out.println(" File saved successfully at: " + FILE_PATH);
 
         } catch (Exception e) {
-            System.out.println("❌ Error saving file: " + e.getMessage());
+            System.out.println(" Error saving file: " + e.getMessage());
         }
     }
 }
