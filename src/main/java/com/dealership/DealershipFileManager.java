@@ -6,22 +6,21 @@ import java.io.IOException;
 
 public class DealershipFileManager {
 
-    // VV Reads the CSV file and loads the dealership info + vehicles VV
+    //VV Below me we load the dealership info + vehicles from the CSV file (Notes) VV
     public static Dealership getDealership() {
         Dealership dealership = null;
 
         try {
-            // VV Opens the CSV file VV
-            // VV Updated with full path so program can find the file VV
+            //VV Below me opens the CSV file (Notes) VV
             BufferedReader reader = new BufferedReader(
                     new FileReader("C:\\Users\\alexa\\PluralSight\\GitHub\\Workshop-4w\\LaRussoAutoGroup\\inventory.csv")
             );
 
-            // VV First line = dealership info VV
+            //VV Below me reads the first line for dealership info (Notes) VV
             String[] dealerInfo = reader.readLine().split("\\|");
             dealership = new Dealership(dealerInfo[0], dealerInfo[1], dealerInfo[2]);
 
-            // VV Each next line = one car VV
+            //VV Below me reads and adds each car to inventory (Notes) VV
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
@@ -37,16 +36,17 @@ public class DealershipFileManager {
                         Double.parseDouble(parts[7])
                 );
 
-                // VV Adds the car to the lot VV
                 dealership.addVehicle(v);
             }
-//
-            reader.close(); // VV Closes file VV
+
+            //VV Below me closes the file after loading (Notes) VV
+            reader.close();
 
         } catch (IOException e) {
             System.out.println("Error loading file: " + e.getMessage());
         }
 
-        return dealership; // VV Returns the loaded dealership VV
+        //VV Below me returns the dealership after loading (Notes) VV
+        return dealership;
     }
 }

@@ -4,41 +4,38 @@ import java.util.ArrayList;
 
 public class Dealership {
 
-    // VV Below me are the Dealership fields/attributes (Notes) VV
-    // VV Think of these as the "business card" of the dealership — it holds the name, address, and phone VV
+    //VV Below me are the Dealership fields/attributes (Notes) VV
     private String CompanyName;
     private String Address;
     private String PhoneNumber;
 
-    // VV Below me is the inventory list (Notes) VV
-    // VV This is like the dealership’s parking lot — where all the cars are stored VV
+    //VV Below me is the inventory list (Notes) VV
     private ArrayList<Vehicle> inventory;
 
-    // VV Below me is the Dealership Constructor (Notes) VV
-    // VV It “builds” a new dealership and sets up its info & creates an empty lot (inventory) VV
+    //VV Below me is the Dealership Constructor (Notes) VV
     public Dealership(String CompanyName, String Address, String PhoneNumber) {
-        inventory = new ArrayList<>(); // Creates an empty lot for cars
+        inventory = new ArrayList<>();
         this.CompanyName = CompanyName;
         this.Address = Address;
         this.PhoneNumber = PhoneNumber;
     }
 
-    // VV Adds a car to the lot VV
+    //VV Below me adds a car to the lot (Notes) VV
     public void addVehicle(Vehicle vehicle) {
         inventory.add(vehicle);
     }
 
-    // VV Opens the gate and returns all cars on the lot VV
+    //VV Below me returns all vehicles in the lot (Notes) VV
     public ArrayList<Vehicle> getAllVehicles() {
         return inventory;
     }
 
-    // VV Lets us replace the whole lot (used when loading from file) VV
+    //VV Below me replaces all vehicles with a new list (Notes) VV
     public void setAllVehicles(ArrayList<Vehicle> newInventory) {
         this.inventory = newInventory;
     }
 
-    // VV Shows all cars and their details (like a salesperson tour) VV
+    //VV Below me shows every car and its details (Notes) VV
     public void showInventory() {
         System.out.println("=== Current Vehicle Inventory for " + CompanyName + " ===");
         System.out.println("Address: " + Address + " | Phone: " + PhoneNumber);
@@ -57,14 +54,54 @@ public class Dealership {
         System.out.println("Total Cars in Inventory: " + inventory.size());
     }
 
-    // VV Empty parking spots for future features (Phase 1 placeholders) VV
-    // VV These don’t do anything yet but will be used later VV
-    public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) { return null; }
-    public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) { return null; }
-    public ArrayList<Vehicle> getVehiclesByYear(int min, int max) { return null; }
-    public ArrayList<Vehicle> getVehiclesByColor(String color) { return null; }
-    public ArrayList<Vehicle> getVehiclesByMileage(double min, double max) { return null; }
-    public ArrayList<Vehicle> getVehiclesByVehicleType(String type) { return null; }
+    //VV Below me are the short search methods (Notes) VV
+    public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) {
+        ArrayList<Vehicle> results = new ArrayList<>();
+        for (Vehicle v : inventory)
+            if (v.getPrice() >= min && v.getPrice() <= max)
+                results.add(v);
+        return results;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) {
+        ArrayList<Vehicle> results = new ArrayList<>();
+        for (Vehicle v : inventory)
+            if (v.getMake().equalsIgnoreCase(make) || v.getModel().equalsIgnoreCase(model))
+                results.add(v);
+        return results;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByYear(int min, int max) {
+        ArrayList<Vehicle> results = new ArrayList<>();
+        for (Vehicle v : inventory)
+            if (v.getYear() >= min && v.getYear() <= max)
+                results.add(v);
+        return results;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByColor(String color) {
+        ArrayList<Vehicle> results = new ArrayList<>();
+        for (Vehicle v : inventory)
+            if (v.getColor().equalsIgnoreCase(color))
+                results.add(v);
+        return results;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByMileage(double min, double max) {
+        ArrayList<Vehicle> results = new ArrayList<>();
+        for (Vehicle v : inventory)
+            if (v.getOdometer() >= min && v.getOdometer() <= max)
+                results.add(v);
+        return results;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByVehicleType(String type) {
+        ArrayList<Vehicle> results = new ArrayList<>();
+        for (Vehicle v : inventory)
+            if (v.getVehicleType().equalsIgnoreCase(type))
+                results.add(v);
+        return results;
+    }
+
     public void removeVehicle(Vehicle vehicle) { /* empty for now */ }
 }
-
