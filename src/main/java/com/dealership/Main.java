@@ -30,7 +30,7 @@ public class Main {
         Dealer.addVehicle(Mustang);
         Dealer.addVehicle(A6);
 
-
+//
         // VV Below me is basically when one of our salesmen bring you to our car lot to show you "ALL" our vehicles and the details about "EACH ONE"(A.K.A prints details for each vehicle)(Notes) VV
         Dealer.showInventory();
     }
