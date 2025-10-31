@@ -2,7 +2,7 @@
 📘 Project Overview
 
 This Java console application simulates a car dealership management system for LaRusso Auto Group.
-It allows users (sales staff or customers) to view all vehicles in inventory, search by price or make/model, and manage dealership data through a CSV file.
+It allows users to view all vehicles in inventory, search by price or make/model, and manage dealership data through a CSV file.
 
 The system demonstrates Object-Oriented Programming (OOP) concepts such as:
 
@@ -86,9 +86,6 @@ AUD005|2021|Audi|A6|Luxury|Grey|22000|58000
 👤 Author
 
 Alexander Diaz
-📍 Year Up United – Java Development Track
-📧 alexdiaz.dev@example.com
- (optional to include your real one)
 
  Invalid Input:
 
