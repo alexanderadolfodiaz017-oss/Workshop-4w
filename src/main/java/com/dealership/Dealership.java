@@ -70,4 +70,10 @@ public class Dealership {
     public String getCompanyName() { return CompanyName; }
     public String getAddress() { return Address; }
     public String getPhoneNumber() { return PhoneNumber; }
+
+    public Vehicle findVehicleByVin(String trim) {
+    }
+
+    public void removeVehicle(Vehicle vehicle) {
+    }
 }
