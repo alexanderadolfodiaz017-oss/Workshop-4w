@@ -15,8 +15,9 @@ public abstract class Contract {
 
     public abstract double getTotalPrice();
 
+    @Override
     public String toString() {
-        return date + " | " + customerName + " | " + customerEmail + " | " +
-                vehicle.getMake() + " " + vehicle.getModel() + " | $" + vehicle.getPrice();
+        return date + "|" + customerName + "|" + customerEmail + "|" +
+                vehicle.getMake() + " " + vehicle.getModel() + "|" + vehicle.getPrice();
     }
 }

@@ -34,7 +34,7 @@ public class DealershipFileManager {
                 }
             }
 
-            // ✅ NEW: Print which file path is being loaded — using color-safe output
+            // VV Below me prints which file path is being loaded (Notes) VV
             final String RESET = "\u001B[0m";
             final String RED = "\u001B[31m";
             final String WHITE = "\u001B[37m";
@@ -46,14 +46,14 @@ public class DealershipFileManager {
                 dealership = new Dealership(dealerInfo[0], dealerInfo[1], dealerInfo[2]);
 
                 String line;
-                int count = 0; // NEW: Keep track of how many cars were loaded
+                int count = 0;
 
                 while ((line = reader.readLine()) != null) {
                     String[] parts = line.split("\\|");
                     if (parts.length == 8) {
                         Vehicle v = new Vehicle(
                                 parts[0],
-                                Double.parseDouble(parts[1]),
+                                (int) Double.parseDouble(parts[1]), // ✅ FIXED: safely reads "2022.0"
                                 parts[2],
                                 parts[3],
                                 parts[4],
@@ -62,13 +62,11 @@ public class DealershipFileManager {
                                 Double.parseDouble(parts[7])
                         );
                         dealership.addVehicle(v);
-                        count++; // NEW: Increment counter
+                        count++;
                     }
                 }
 
-                // NEW: Show result count for debugging with color
                 System.out.println(RED + "Successfully loaded " + WHITE + count + RED + " vehicle(s) from file." + RESET);
-
             }
 
         } catch (IOException e) {
@@ -82,10 +80,8 @@ public class DealershipFileManager {
     public static void saveDealership(Dealership dealership) {
         try (PrintWriter writer = new PrintWriter(FILE_PATH)) {
 
-            // VV Below me writes dealership info first VV
             writer.println(dealership.getCompanyName() + "|" + dealership.getAddress() + "|" + dealership.getPhoneNumber());
 
-            // VV Below me writes every car to the file VV
             for (Vehicle v : dealership.getAllVehicles()) {
                 writer.println(v.getVin() + "|" + v.getYear() + "|" + v.getMake() + "|" + v.getModel() + "|" +
                         v.getVehicleType() + "|" + v.getColor() + "|" + v.getOdometer() + "|" + v.getPrice());
@@ -102,4 +98,3 @@ public class DealershipFileManager {
         }
     }
 }
-//

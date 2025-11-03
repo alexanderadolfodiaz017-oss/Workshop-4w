@@ -11,7 +11,6 @@ public class Dealership {
     private ArrayList<Vehicle> inventory;
 
     // VV Below me is my Dealership Constructor (Notes) VV
-    // VV This "builds" a dealership object and assigns its name, address, and phone number VV
     public Dealership(String CompanyName, String Address, String PhoneNumber) {
         inventory = new ArrayList<>();
         this.CompanyName = CompanyName;
@@ -30,7 +29,6 @@ public class Dealership {
     }
 
     // VV Below me shows every car and its details (Notes) VV
-    // VV Think of this as a salesman walking you through the lot and describing each car VV
     public void showInventory() {
         System.out.println("=== Current Vehicle Inventory for " + CompanyName + " ===");
         System.out.println("Address: " + Address + " | Phone: " + PhoneNumber);
@@ -38,7 +36,8 @@ public class Dealership {
 
         for (Vehicle v : inventory) {
             System.out.println(
-                    v.getYear() + " " + v.getMake() + " " + v.getModel() +
+                    "VIN: " + v.getVin() + " | " +   // ✅ VIN added
+                            v.getYear() + " " + v.getMake() + " " + v.getModel() +
                             " | Type: " + v.getVehicleType() +
                             " | Color: " + v.getColor() +
                             " | Price: $" + v.getPrice()
@@ -71,7 +70,7 @@ public class Dealership {
     public String getAddress() { return Address; }
     public String getPhoneNumber() { return PhoneNumber; }
 
-    // VV Below me finds a car by its VIN (Notes) VV
+    // VV Below me are helper methods VV
     public Vehicle findVehicleByVin(String vin) {
         for (Vehicle v : inventory)
             if (v.getVin().equalsIgnoreCase(vin))
@@ -79,7 +78,6 @@ public class Dealership {
         return null;
     }
 
-    // VV Below me removes a car from the lot (Notes) VV
     public void removeVehicle(Vehicle vehicle) {
         inventory.remove(vehicle);
     }
