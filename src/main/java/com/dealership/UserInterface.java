@@ -85,7 +85,7 @@ public class UserInterface {
 
         String today = LocalDate.now().toString();
         Contract contract;
-//k
+//
         if (type.equals("S")) {
             System.out.print(CYAN + "Financed? (Y/N): " + WHITE);
             boolean finance = input.nextLine().trim().equalsIgnoreCase("Y");
