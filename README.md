@@ -106,6 +106,45 @@ Menu:
 
 <img width="1920" height="1080" alt="Main menu" src="https://github.com/user-attachments/assets/217d7785-4ac4-46fe-bdf6-d91c68379e86" />
 
+---
 
+💼 Sales & Leasing System (Part 2 Update)  
+
+Part 2 expands the dealership system with new features that allow selling and leasing vehicles.  
+
+✅ Option 4 added to the main menu → Sell/Lease a Vehicle  
+✅ Collects customer name, email, and VIN  
+✅ Supports both sale and lease transactions  
+✅ Prevents leasing of vehicles older than 3 years  
+✅ Removes sold or leased vehicles from inventory automatically  
+✅ Saves all contract data to contracts.csv  
+
+🧾 Contract Classes  
+
+SalesContract.java  
+– Handles sales transactions, taxes, and optional financing  
+– Calculates total price and monthly payments for financed sales  
+
+LeaseContract.java  
+– Handles lease transactions  
+– Calculates monthly payments, lease fees, and end value  
+
+ContractFileManager.java  
+– Appends every new contract to a CSV file located in your Documents folder  
+
+📂 Example contract output:  
+
+SALES|2025-11-03|John Doe|john@example.com|BUG001|2022|Bugatti|Chiron|Sports|Black|500|3000000|150000|100|495|3150595|Y|7050.12  
+LEASE|2025-11-03|Jane Smith|jane@example.com|AUD005|2021|Audi|A6|Luxury|Grey|22000|58000|29000|4060|33060|1715.23  
+(image)
+
+🧱 Updated Project Structure (Part 2)  
+
+Contract.java – Abstract base for contracts  
+SalesContract.java – Calculates sales and financing details  
+LeaseContract.java – Calculates leasing details  
+ContractFileManager.java – Saves all contracts  
+UserInterface.java – Includes “Sell/Lease Vehicle” option  
+Main.java – Runs the full dealership system  
 
  
