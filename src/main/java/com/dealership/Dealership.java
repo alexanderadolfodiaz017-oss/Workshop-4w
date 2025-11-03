@@ -71,9 +71,16 @@ public class Dealership {
     public String getAddress() { return Address; }
     public String getPhoneNumber() { return PhoneNumber; }
 
-    public Vehicle findVehicleByVin(String trim) {
+    // VV Below me finds a car by its VIN (Notes) VV
+    public Vehicle findVehicleByVin(String vin) {
+        for (Vehicle v : inventory)
+            if (v.getVin().equalsIgnoreCase(vin))
+                return v;
+        return null;
     }
 
+    // VV Below me removes a car from the lot (Notes) VV
     public void removeVehicle(Vehicle vehicle) {
+        inventory.remove(vehicle);
     }
 }
